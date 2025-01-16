@@ -43,3 +43,76 @@
 ----
 # Dynamic Channel Allocation:
 - Channels which have more frames(data) to send, gets more Medium, and the ones which has less Data to send(Frames to put on wire) gets less Medium
+
+| Station Model                       | Single Channel Assumption                          | Collision Assumption                                                                                          | Continuous Time                          | Slottet Time                                  | Carrier Sense                                 | No Carrier Sense                               |
+|-------------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------|
+| `n` independent stations            | All station connected to the same channel          | Two stations sending at `overlapping time intervals`<br/> => collision <br/>  the transmitted data is garbled | Time is not Slotted                      | time is slotted                               | Channels are either busy or idle              | Station can not sense the channel              |
+| Each Station wants to send `Frames` | All stations are equivalent                        | after collision `data must be sent again`                                                                     | Stations can attempt to send at any time | Frame transmition at beginning of a time slot | Station can sense if the channel is busy      | Stations just transmit                         |
+| $\lambda$ is constant arrival rate  | Every station can send and recieve                 | Stations can detect collisions                                                                                |                                          |                                               | before sending the station checks the channel | after sending the station knows whether it was |
+| P(Frame_Send) = $\lambda* \delta t$ | `Optional`: Priorities can be assigned to stations | no other errors, only collisions                                                                              |                                          |                                               |                                               | `Problem:` A transmition has been destroyed    |
+
+> Carrier Sense helps in avoiding collisions but its still possible that a collision accure when two channels send frames at the same point, `Because of Signal Time which could cause delay`.
+
+----
+# Multiple Access Protocols
+- ALOHA
+- CSMA: Carrier Sense Multiple Access `important`
+- Collision Free Protocols
+- Limited-Conetention Protocols
+----
+# ALOHA Protocol:
+- `Problem:` No Carrier Sense, only Base Channel knows whats happening => sends `ACK`
+- No `ACK` => Collision happened
+- Cabless
+### Protocol: 
+- `M` Nodes can create new `Frames` at `any Time`
+- The Node immediately transmits its `frame` on a `shared frquency` 
+- Base Station `acknowledges` a frame in a `dedicated frequency`
+- if `collision` => no `ACK`
+- Retransmission with probability `P` => avoids efficiency to become 0 
+> `P` quality depends on how many stations on Channel
+- **Vulnerability time** = 2t
+
+## Slotted ALOHA:
+- Create Time Slots
+- Stations can only send at the beggining of a time slot
+=> **Vulnerability time** is reduced to 2t and throughput is doubled
+**Problem:** how does everybody agree on time slots
+----
+# CSMA Carrier Sense Multiple Access:
+- **Goal**: `Minimize` collisions and increase `performance`
+- A station `follows` the activity of other stations => Cable connection => Carrier Sense
+- 1- Check if Channel is free before sending
+- 2- if another channels begins sending at the same time stop sending
+
+## How do Collisions accure?
+![CSMA_Collision](CSMA_Collision.png)
+
+**Whats the problem with a fast network in Carrier Sense?**
+- huge `overhead`, a frame should be so big to cover `2t` of sending time => a situation could come with `1bit` data and `1000bit` overhead.
+
+# 1-persistent CSMA:
+- Listen before transmitting(`listning the whole time`)
+- if channel busy, wait until channel is idle then transmit
+- if collision, wait a random amount of time and start all over again
+- **why is it called 1-persistent?**
+> because station is sending with a probability of 1 whenever the channel is idle
+
+> best time to use one only one channel want to send
+
+# Nonpersistent CSMA
+- Listen before transmitting (`Not listening the whole time`)
+- if busy wait a random amount of time then sense the channel again
+- if idle send packet immediately
+- if collision, wait a random of time and start all over again
+
+**speciality:** Station is not listening the entire time => not so greedy as `1-persistent`
+
+# P-persistent CSMA
+- Applies to slotted channels
+- listen before transmitting 
+- if channel is busy, wait until channel is idle
+- if idle: 
+  - transmit with probability of `p`
+  - wait for next slot with probability `q = 1-p`
+- if collision start over again
