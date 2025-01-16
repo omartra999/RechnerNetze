@@ -24,8 +24,8 @@ $$
 
 | Nyquist                                                                                   | Shannon                                                                     |
 |-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| Channel with `H Low-pass` Filter                                                          | Increasing V has Limits                                                     |
-| Sampling at `2H` is necessary and sufficient                                              | S/N : Signal to noise ratio, usually expressed in decibels `db`             |
+| Channel with `H Low-pass` Filter                                                          | Increasing `V` has Limits                                                     |
+| Sampling at `2H` is necessary and sufficient                                              | `S/N` : Signal to noise ratio, usually expressed in decibels `db`             |
 | $$ \text{Maximum Data Rate} = 2H.log_2(V), \text{bits/sec} $$                             | $$ \text{Maximum data rate} = H . log_2(1 +\frac{S}{N}), \text{bits/sec} $$ |
 | Determines max data rate based on **bandwidth** and the number of **Signal levels** without considering noise |                                                                             |
 
