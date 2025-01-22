@@ -188,3 +188,10 @@ $$
 
 > Collisions can still occure because `RTS frames` can collide
 => `MACAW`: uses `CSMA` to avoid most `RTS` collisions
+----
+
+# Manchester Code
+![Manchester_Code](Resources/Manchester_Code.png)
+
+----
+# the Rest of Mac I give up and will do the Exercises only
