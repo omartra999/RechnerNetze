@@ -170,3 +170,21 @@ $$
 - also a `reservation protocol`
 - the station with the highest `Binary Number` will start sending first
 ----
+# Multiple Access Collision Avoidance (MACA):
+
+**`A` wants to send to `B`**:
+- `A` sends a `Request to Send (RTS)` to `B`
+- `RTS` contains the size of the `real data`
+- `B` responds with a `Clear to Send (CTS)`
+- `CTS` contains the size of the `real data`
+- `A` receives `CTS`
+- `A` sends `real data`
+
+> in case `A` does not receive `CTS` => Collision
+
+## Avoiding Collisions: 
+- Stations having `RTS` will be silent until they hear `CTS`
+- Stations having `CTS` will be silent until data is transmitted
+
+> Collisions can still occure because `RTS frames` can collide
+=> `MACAW`: uses `CSMA` to avoid most `RTS` collisions
