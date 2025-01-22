@@ -1,3 +1,9 @@
+# Meduim Access Control (MAC):
+- its a Sublayer of the `Data Link Layer`
+- its used to send `Frames` between 2 Devices
+- it should be made sure that a Device only sends one `Frame` at a time and not more
+
+-----
 # Channel Allocation Problem
 
 ## Collision:
@@ -20,6 +26,7 @@
 ![Mac_SubLayer](mac_layer.png)
 ----
 # Static Channel Allocation:
+> every one has one minute to speak, but what if one don't have nothing to say => the next person is still gonna have to wait for that one's minute to finish
 - One Channel has the Medium the rest don't have a medium
 - **Multiplexing:** putting `multiple Data Flows` on one channel
 - **Frequency Division Multiplexing (FDM)**
@@ -31,7 +38,7 @@
 > Works just like a Chord on a musical instrument, input = many notes of different frequencies at the same time, output = a harmonized understandable sound from the same instrument
 > Dividing Frequencies
 ## Time Division Multiplexing
-> Percussionist, Dividing the Frame to Bars per Beats, every instrument playes on its beat and grooves 
+> Percussionist, Dividing the Channel to Bars per Beats, every instrument playes on its beat and grooves 
 
 | Frequency Division Multiplexing                           | Time Division Multiplexing                                    |
 |-----------------------------------------------------------|---------------------------------------------------------------|
@@ -42,20 +49,21 @@
 | Bandwidth decreased by factor `n` for every single user :( | Bandwidth decreased by factor `n` for every single user :(    |
 ----
 # Dynamic Channel Allocation:
-- Channels which have more frames(data) to send, gets more Medium, and the ones which has less Data to send(Frames to put on wire) gets less Medium
+- Channels which have more `frames(data)` to send, gets more Medium, and the ones which has less Data to send(Frames to put on wire) gets less Medium
 
 | Station Model                       | Single Channel Assumption                          | Collision Assumption                                                                                          | Continuous Time                          | Slottet Time                                  | Carrier Sense                                 | No Carrier Sense                               |
 |-------------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------|
-| `n` independent stations            | All station connected to the same channel          | Two stations sending at `overlapping time intervals`<br/> => collision <br/>  the transmitted data is garbled | Time is not Slotted                      | time is slotted                               | Channels are either busy or idle              | Station can not sense the channel              |
+| `n` independent stations            | All station connected to the same `channel`          | Two stations sending at `overlapping time intervals`<br/> => collision <br/>  the transmitted data is garbled | Time is not Slotted                      | time is slotted                               | Channels are either busy or idle              | Station can not sense the channel              |
 | Each Station wants to send `Frames` | All stations are equivalent                        | after collision `data must be sent again`                                                                     | Stations can attempt to send at any time | Frame transmition at beginning of a time slot | Station can sense if the channel is busy      | Stations just transmit                         |
 | $\lambda$ is constant arrival rate  | Every station can send and recieve                 | Stations can detect collisions                                                                                |                                          |                                               | before sending the station checks the channel | after sending the station knows whether it was |
 | P(Frame_Send) = $\lambda* \delta t$ | `Optional`: Priorities can be assigned to stations | no other errors, only collisions                                                                              |                                          |                                               |                                               | `Problem:` A transmition has been destroyed    |
 
 > Carrier Sense helps in avoiding collisions but its still possible that a collision accure when two channels send frames at the same point, `Because of Signal Time which could cause delay`.
+> Carrier Sense does not always help in **wireless connections** and thats because not all channels can sense each other rather just the two connected channels, this could cause problems like the hidden station problem
 
 ----
-# Multiple Access Protocols
-- ALOHA
+# Multiple Access Protocols(MAP)
+- ALOHA (No Carier Sense)
 - CSMA: Carrier Sense Multiple Access `important`
 - Collision Free Protocols
 - Limited-Conetention Protocols
@@ -64,8 +72,11 @@
 - `Problem:` No Carrier Sense, only Base Channel knows whats happening => sends `ACK`
 - No `ACK` => Collision happened
 - Cabless
+
+![ALOHA](ALOHA.png)
+
 ### Protocol: 
-- `M` Nodes can create new `Frames` at `any Time`
+- `M` Nodes can `create`/`send` new `Frames` at `any Time`
 - The Node immediately transmits its `frame` on a `shared frquency` 
 - Base Station `acknowledges` a frame in a `dedicated frequency`
 - if `collision` => no `ACK`
@@ -73,6 +84,7 @@
 > `P` quality depends on how many stations on Channel
 - **Vulnerability time** = 2t
 
+![Vulnerability_time](Vulnerability_Aloha.png)
 ## Slotted ALOHA:
 - Create Time Slots
 - Stations can only send at the beggining of a time slot
@@ -116,3 +128,13 @@
   - transmit with probability of `p`
   - wait for next slot with probability `q = 1-p`
 - if collision start over again
+
+
+|                | 1-Persistent CSMA                                                | Nonpersistent CSMA                                               | n-Persistent CSMA                                                                                 | 
+|----------------|------------------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| **Start**      | listen before transmitting                                       | listen before transmitting                                       | listen before transmitting                                                                        |
+| **Busy**       | if busy wait until idle then transmit                            | if busy wait a random amount if time then sense again            | if busy wait until idle                                                                           |
+| **Idle**       | if idle send immediately with probability `p = 1`                | if idle send packet immediately                                  | if idle send packet with probability `p`<br/> or wait till next slot with probability `q = 1 - p` |
+| **Collision**  | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again                                  |
+| **Speciality** | Greedy, sends always when Idle channel                           | not listening the entire time, less greedy than `1-persistent`   | not always sending and it depends on `transmission probability`                                   |
+
