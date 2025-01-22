@@ -94,7 +94,8 @@
 ----
 # CSMA Carrier Sense Multiple Access:
 
->Listen before speaking and only speak if no one else is speaking
+> Listen before speaking and only speak if no one else is speaking
+> `CSMA` cannot be used in wireless protocols
 
 - **Goal**: `Minimize` collisions and increase `performance`
 - A station `follows` the activity of other stations => Cable connection => Carrier Sense
@@ -137,6 +138,35 @@
 |---------------------|--------------------------|
 | Listen `when` sending | Listen `before` sending  |
 -----
+# CSMA Problems:
+## Hidden Station Problem
+![Hidden_Station](Resources/Hidden_Station.png)
 
+## Exposed Station Problem
+![Exposed_Station](Resources/Exposed_Station.png)
 
+-----
 
+# Collision Free Protocols
+
+## Bitmap Protocol:
+- a `reservation protocol`
+- time slots are reserved by `stations` who want to send
+- every `station` that reserved a place send a `Frame` in the correct order
+
+![BitMapProtocol](Resources/BitMapProtocol.png)
+
+**Overhead calculation for the reservation:**
+- If every `station` wants to send a frame (N in total) => `Overhead = 1` contention slot per `N` frames = `1` bits
+$$
+E = \frac{d}{d + 1} = 1
+$$
+- Only `one station` wants to send a frame => `Overhead = 1` contention slot for `1 frames` = `N` bits
+$$
+E = \frac{d}{d + N} 
+$$
+
+## Binary countdown protocol:
+- also a `reservation protocol`
+- the station with the highest `Binary Number` will start sending first
+----
