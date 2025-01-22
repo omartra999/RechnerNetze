@@ -15,7 +15,7 @@
 
 >  **Server** playes a crictical role in managing resources for multiple clients
 
-![server-client-photo](/Server-Client.png)
+![server-client-photo](/Resources/Server-Client.png)
 ---
 # Peer-to-Peer Networks
 
@@ -28,7 +28,7 @@
 - Email
 - Social Network apps: Facebook, Wiki,.....
 
-![peer-to-peer](/Peer-To-Peer.png)
+![peer-to-peer](/Resources/Peer-To-Peer.png)
 -----
 # Types of transmission technology
 
@@ -112,7 +112,7 @@
 | SEND       | Send a message to the peer                 |
 | DISCONNECT | Terminate a connection                     |
 
-![Primitives](Primitives.png)
+![Primitives](Resources/Primitives.png)
 
 ----
 # Reference Models

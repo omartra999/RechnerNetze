@@ -23,7 +23,7 @@
 - is required when multiple stations want to put `frames` on the medium (wire) at the same time
 - is a `Sublayer` of the `Data Link Layer`
 - is **NOT** a part of the `OSI Model`
-![Mac_SubLayer](mac_layer.png)
+![Mac_SubLayer](Resources/mac_layer.png)
 ----
 # Static Channel Allocation:
 > every one has one minute to speak, but what if one don't have nothing to say => the next person is still gonna have to wait for that one's minute to finish
@@ -73,7 +73,7 @@
 - No `ACK` => Collision happened
 - Cabless
 
-![ALOHA](ALOHA.png)
+![ALOHA](Resources/ALOHA.png)
 
 ### Protocol: 
 - `M` Nodes can `create`/`send` new `Frames` at `any Time`
@@ -84,7 +84,7 @@
 > `P` quality depends on how many stations on Channel
 - **Vulnerability time** = 2t
 
-![Vulnerability_time](Vulnerability_Aloha.png)
+![Vulnerability_time](Resources/Vulnerability_Aloha.png)
 ## Slotted ALOHA:
 - Create Time Slots
 - Stations can only send at the beggining of a time slot
@@ -98,7 +98,7 @@
 - 2- if another channels begins sending at the same time stop sending
 
 ## How do Collisions accure?
-![CSMA_Collision](CSMA_Collision.png)
+![CSMA_Collision](Resources/CSMA_Collision.png)
 
 **Whats the problem with a fast network in Carrier Sense?**
 - huge `overhead`, a frame should be so big to cover `2t` of sending time => a situation could come with `1bit` data and `1000bit` overhead.
