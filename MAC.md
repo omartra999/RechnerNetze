@@ -85,13 +85,17 @@
 - **Vulnerability time** = 2t
 
 ![Vulnerability_time](Resources/Vulnerability_Aloha.png)
+
 ## Slotted ALOHA:
 - Create Time Slots
 - Stations can only send at the beggining of a time slot
-=> **Vulnerability time** is reduced to 2t and throughput is doubled
+=> **Vulnerability time** is reduced from `2t` to `t` and throughput is doubled
 **Problem:** how does everybody agree on time slots
 ----
 # CSMA Carrier Sense Multiple Access:
+
+>Listen before speaking and only speak if no one else is speaking
+
 - **Goal**: `Minimize` collisions and increase `performance`
 - A station `follows` the activity of other stations => Cable connection => Carrier Sense
 - 1- Check if Channel is free before sending
@@ -103,32 +107,7 @@
 **Whats the problem with a fast network in Carrier Sense?**
 - huge `overhead`, a frame should be so big to cover `2t` of sending time => a situation could come with `1bit` data and `1000bit` overhead.
 
-# 1-persistent CSMA:
-- Listen before transmitting(`listning the whole time`)
-- if channel busy, wait until channel is idle then transmit
-- if collision, wait a random amount of time and start all over again
-- **why is it called 1-persistent?**
-> because station is sending with a probability of 1 whenever the channel is idle
-
-> best time to use one only one channel want to send
-
-# Nonpersistent CSMA
-- Listen before transmitting (`Not listening the whole time`)
-- if busy wait a random amount of time then sense the channel again
-- if idle send packet immediately
-- if collision, wait a random of time and start all over again
-
-**speciality:** Station is not listening the entire time => not so greedy as `1-persistent`
-
-# P-persistent CSMA
-- Applies to slotted channels
-- listen before transmitting 
-- if channel is busy, wait until channel is idle
-- if idle: 
-  - transmit with probability of `p`
-  - wait for next slot with probability `q = 1-p`
-- if collision start over again
-
+## CSMA Types:
 
 |                | 1-Persistent CSMA                                                | Nonpersistent CSMA                                               | n-Persistent CSMA                                                                                 | 
 |----------------|------------------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
@@ -137,4 +116,27 @@
 | **Idle**       | if idle send immediately with probability `p = 1`                | if idle send packet immediately                                  | if idle send packet with probability `p`<br/> or wait till next slot with probability `q = 1 - p` |
 | **Collision**  | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again                                  |
 | **Speciality** | Greedy, sends always when Idle channel                           | not listening the entire time, less greedy than `1-persistent`   | not always sending and it depends on `transmission probability`                                   |
+
+
+## Collision Detection:
+
+- if no collision after `2t` => no collision occured
+
+### 1- Wait for Acknowledge(ACK):
+
+- `ACK` is sent after the `Frame` has been fully transmitted, 
+> => waiting for `ACK` wastes time and bandwidth => `not efficient`
+
+### 2- Sending and Receiving:
+- Check, whether you receive what you have sent =>
+> Collisions can be detected early
+
+## Collision Detection vs Carrier Sense:
+
+| Collision Detection | Carrier Sense            |
+|---------------------|--------------------------|
+| Listen `when` sending | Listen `before` sending  |
+-----
+
+
 
