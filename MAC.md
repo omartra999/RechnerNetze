@@ -110,10 +110,10 @@
 
 ## CSMA Types:
 
-|                | 1-Persistent CSMA                                                | Nonpersistent CSMA                                               | n-Persistent CSMA                                                                                 | 
-|----------------|------------------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| **Start**      | listen before transmitting                                       | listen before transmitting                                       | listen before transmitting                                                                        |
-| **Busy**       | if busy wait until idle then transmit                            | if busy wait a random amount if time then sense again            | if busy wait until idle                                                                           |
+|                | 1-Persistent CSMA                                                | Nonpersistent CSMA                                               | n-Persistent CSMA                                                                                 | CSMA/CD | CSMA/CA |
+|----------------|------------------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|---------|---------|
+| **Start**      | listen before transmitting                                       | listen before transmitting                                       | listen before transmitting                                                                        | Carrier Sense with Collision Detection| Uses `RTS`/`CTS`|  
+| **Busy**       | if busy wait until idle then transmit                            | if busy wait a random amount if time then sense again            | if busy wait until idle                                                                           |         | useses `CS` to avoid colliding `RTS` buts collisions still possible |
 | **Idle**       | if idle send immediately with probability `p = 1`                | if idle send packet immediately                                  | if idle send packet with probability `p`<br/> or wait till next slot with probability `q = 1 - p` |
 | **Collision**  | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again | if collision, wait a random amount of time then start over again                                  |
 | **Speciality** | Greedy, sends always when Idle channel                           | not listening the entire time, less greedy than `1-persistent`   | not always sending and it depends on `transmission probability`                                   |
@@ -194,4 +194,42 @@ $$
 ![Manchester_Code](Resources/Manchester_Code.png)
 
 ----
-# the Rest of Mac I give up and will do the Exercises only
+# Exercies and old exam stuff:
+
+> Multiplexing allows the 'parallel' usage for more users in a 'shared channel', 
+> Time, and Frequency Multiplexing make it 'impossible' for 'collisions' to occure, but the user throughput will be reduced
+
+ |                                       | Frequency multiplexing | Time Multiplexing |
+ |---------------------------------------|-----------------------|-----------------|
+ | Fixed allocation of transmission times |                       | ✅               |
+ | Guaranteed bandwidth                  | ✅                      |✅                |
+ | Low Latency                           | ✅                     |                 |
+ | Parallel sending                      | ✅                     |  ✅              |
+ | High Latency                          |                       | ✅                |
+ | varied Bandwidth                      |                       |                 |
+
+## Definitions:
+- dividing time in discrete time intervals and transmitting begins at the beggining of a time interval : `Slotted Time`
+- when stations send in overlapping times, a collision occures, data should be sended again : `Collision Assumption`
+- All channels which are connected on the same channel are equivalent and can send and receive: `Single Channel Assumption`
+- `N` undependent stations want to send Frames: `Station Model`
+- Stations can sence if a channel is busy: `Station Model`
+- Time is not divided and stations can send at any given time: `Continuous Time`
+
+**Why is resending in `ALOHA` after a collision only happens with a possability of `P`?**
+- because it would come to permanent collisions if this isn't done
+
+## Slotted vs Pure ALOHA:
+- `Slotted ALOHA` collision probability is `half` the collision probability in `pure ALOHA`
+- `Slotted ALOHA` has more latency because of the waiting times of free slots
+
+**What problems make CSMA unsuitable for use in wireless networks?**
+- Exposed-Station-Problem
+- Hidden-Station-Problem
+
+## Bridge vs Switch
+
+- Bridge : Networks networking/ could also connect between different Network Techs
+- Switch : Networks Computers/ Same Network tech
+
+## Reminders Youtube: Second Chance Bridging algorithim/Backward Learning Algorithem/ Spanning Tree Algorithem

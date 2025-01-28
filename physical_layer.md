@@ -44,3 +44,6 @@ $$
 $$
 Attenuation [dB] = (10 \times \log_{10} \frac{\text{Transmitted Power}}{\text{Received Power}})
 $$
+
+- Repeater: repeat + make better
+- Hub : Cable
