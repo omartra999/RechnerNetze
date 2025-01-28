@@ -4,12 +4,30 @@
 
 # Viele Fragen mit Nicht viel Schreiben, 1 Satz- 1 Wort
 # Abkurtzungen
+- TCP
+- UDP
+- FTP
+- IP
+- OSI
+- FDM
+- TDM
+- CSMA
+- CD
+- CA
+- LAN
+- WLAN
+- MAC
+- WAN
+- CTS
+- RTS
+- MACA
+- PPP Point to Point Protocol
 # Layers, Protocols for Layers, TCP vs UDP/ Connection vs Connectionless
 # Fourier Analyse Math problems from the excersise
 # Nyquist + Shannon explain or formel
 # MAC FDM, TDM, ALOHA Pure, Slotted Aloha, CSMA all
 # What for which protocol
-# CSMA- P persistent: calculate P(Collision) 
+# CSMA- P persistent: calculate P(Collision)
 # Collision Free protocols: what are, why are
 # Diagram: Exposed-Hidden Station Problems
 # Why no CSMA on Network: can't listen
