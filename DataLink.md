@@ -91,8 +91,26 @@ $$
 - No errors
 
 ## Simplex Stop and wait protocol
+
+```shell
+begin
+   while (true)      //check repeatedly
+   do
+      Wait_For_Event();     //wait for arrival of frame
+      if ( Event(Frame_Arrival) then
+         Receive_Frame_From_Physical_Layer();
+         Extract_Data();
+         Deliver_Data_To_Network_Layer();
+         Send_ACK();
+      end if
+   end while
+end
+```
+![Stop_and_wait](Resources/Stop_and_wait.png)
+
 **Problem to solve:**
   - The `receiver` might be too slow to process al data sent => `sender` must slow down
+
 **Possible Solutions**
   - The sender pauses between two `frames`(`worst case processing time` of the receiver required)
   - the receiver tells the sender when to continue(Requires a `Back Channel`)

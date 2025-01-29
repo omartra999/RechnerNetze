@@ -4,6 +4,7 @@
 
 # Viele Fragen mit Nicht viel Schreiben, 1 Satz- 1 Wort
 # Abkurtzungen
+- SPT
 - TCP
 - UDP
 - FTP
@@ -38,10 +39,12 @@ not all channels can sense each other, rather `only the two connected channels`
 # Bit Stuffing: Praxis
 # Parity Bits
 # Binary Hamming Code (4,7) `formel is given` `Code + Decode + where is error/is there an error/ **which bit is wrong**`
-# Flud, `where do the Data go + Draw`
+
+# Flood, `where do the Data go + Draw`
 # Routing Tables `where will it route?/ complete the routing tables` Distant Routing + -----
 # What is /20
 # Network mask write from Decimal + IP Addresses
 # IP Header: What does a field do
+
 # Transport = TCP vs UDP/ Algorythms to solve different problem/ explain with few words
 # Timeouts: Why Timeouts/Nagels Algorithem/ which MAC address/ Subnetwork mask: is the IP Addres `x` in the Submask
