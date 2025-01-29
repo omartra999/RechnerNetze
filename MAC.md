@@ -103,7 +103,9 @@
 - Create Time Slots
 - Stations can only send at the beggining of a time slot
 => **Vulnerability time** is reduced from `2t` to `t` and throughput is doubled
+
 **Problem:** how does everybody agree on time slots
+
 ----
 # CSMA Carrier Sense Multiple Access:
 
@@ -237,6 +239,7 @@ $$
 - `Slotted ALOHA` has more latency because of the waiting times of free slots
 
 **What problems make CSMA unsuitable for use in wireless networks?**
+on a wireless network not all stations can sense each other
 - Exposed-Station-Problem
 - Hidden-Station-Problem
 

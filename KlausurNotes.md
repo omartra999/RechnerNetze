@@ -11,6 +11,7 @@
 - OSI
 - FDM
 - TDM
+- MAP
 - CSMA
 - CD
 - CA
@@ -30,7 +31,8 @@
 # CSMA- P persistent: calculate P(Collision)
 # Collision Free protocols: what are, why are
 # Diagram: Exposed-Hidden Station Problems
-# Why no CSMA on Network: can't listen
+# Why no CSMA on Network: 
+not all channels can sense each other, rather `only the two connected channels`
 # Manchster Code-Differential Manchester
 # Hamming Distance: Praxis
 # Bit Stuffing: Praxis
