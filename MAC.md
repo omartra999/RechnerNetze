@@ -10,6 +10,12 @@
 - Preforms multiple access resolutions when more than one `data frame` is to be transmitted, it determines the channel access methods for transmission
 - Preforms `collision resolution` and initiating retransmission in case of resolution
 - Contributes to protection against transmission errors
+
+## MAC Address
+- is a unique identifier allotted to a `network interface controller` or a `device`
+- used as a network address for data transmission within a network segment like `Ethernet`, `Wifi`, and `Bluetooth`
+- assigned to a the device in the `network interface card NIC` at the time of manufacturing `example:  00:0A:89:5B:F0:11`
+
 -----
 # Channel Allocation Problem
 
