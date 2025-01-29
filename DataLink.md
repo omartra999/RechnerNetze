@@ -1,3 +1,12 @@
+# Data Link Layer
+
+## Functions:
+- Framing
+- Error Detection: `Parity Check`, `Hamming Distance`
+- Error Correction
+- Flow Control: `Stop-and-wait`, `Sliding window`
+- Addressing
+
 # Connectionless Services:
 - `Frames` are sent `once`
 
@@ -21,6 +30,9 @@
 - Ordering: `frames` are numbered
 -----
 # Framing:
+
+## how does a frame look like?
+![Frame_Data_Link](Resources/Frame_Data_Link.png)
 
 | Sending Machine                                                                                                       | Receiving Machine                                                                                   |
 |-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
