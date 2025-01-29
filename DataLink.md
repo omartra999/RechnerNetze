@@ -75,7 +75,7 @@ $$
 - `d` parity bits to detect `d` errors
 - more parity bits => longer blocks => more errors
 
-# [7,4] Binary Hamming Code
+# [7,4] Binary Hamming Code(Youtube)
 
 ----
 # Elemantary Data Link Protocols
