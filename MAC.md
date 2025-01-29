@@ -3,6 +3,13 @@
 - its used to send `Frames` between 2 Devices
 - it should be made sure that a Device only sends one `Frame` at a time and not more
 
+## Job of the MAC
+- Provides an abstraction of the `physical layer` to the upper layers of the `OSI`
+- Responsible for encapsulating `Frames` so they are suitablefor transmission via the `Physical Meduim`
+- Resolves the addressing of the `source station` as well as the `destination station`, or groups of destination stations
+- Preforms multiple access resolutions when more than one `data frame` is to be transmitted, it determines the channel access methods for transmission
+- Preforms `collision resolution` and initiating retransmission in case of resolution
+- Contributes to protection against transmission errors
 -----
 # Channel Allocation Problem
 
