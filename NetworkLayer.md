@@ -34,7 +34,8 @@
 ----
 # Routing Algorithms
 
-## Dijkstra's Algorithm
+## Dijkstra's Algorithm for shortest path tree SPT
+> Shortest Path Routing requires global knowledge => Path can be inaccurate
 ![Graph01](Graph01.png)
 ### Step 1:
 - sptSet = { }
@@ -51,4 +52,46 @@
 
 ### Step n: 
 - repeat till the end
------
+
+## Flooding
+> No global knowledge required, very robust
+- Propagate each message to all neighbors `Each Message reaches every Node, a Message can reach one node several times`
+- `Maximum Hop Count` + `Sequence Numbers` to avoid infinite circulation
+- Each Message has its `Hop Count` (initial: `m.hop_count = 0`), and its `Sequence Number` `m.seq`, `m.source` the name of the source router
+- for each propagation of `m` : `m.hop_count += 1`
+- ```python
+    if m.hop_count = max_hop_count: 
+        discard(m)
+  ``` 
+- each router contains a counter `k`
+- when a message is created:
+```python
+m.seq = k
+m.source = router.name
+k += 1
+```
+- when a message is created:
+```python
+if (m.seq,m.source) in table:
+    discard(m)
+else:
+    table.add(m.seq,m.source)
+    propagate
+```
+----
+
+
+# Dynamic Routing Algorithems
+
+| Distance Vector Routing                                        | Link State Routing                                                                                                          |
+|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Routers exchange their routing tables regularly with neighbors | Routers flood their view of the world </br> Every Router gains global knowledge </br> every router calculates shortest path |
+| Only communication between neighbors                           | Adapts fast                                                                                                                 |    
+| Adapts slowly to new topologies                                | More overhead due to flooding                                                                                               |
+
+## Distance Vector Routing(this + youtube):
+- **`A` receives routing table of `X`**
+1. `A` knows it's distance to `X` is $ Ax $
+2. `X` says it can reach `Y` at a distance of $ Xy $
+3. `A` can reach `Y` at a distance of $ Ax + Xy $
+4. if this is the best route => insert to routing table
